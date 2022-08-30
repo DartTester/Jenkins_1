@@ -17,45 +17,45 @@ import static io.qameta.allure.Allure.step;
 
 public class Demo_qa_form_Jenkins extends TestBase {
 
-    @DisplayName("Проверка корректного заполнения формы")
+    @DisplayName("Checking the correct filling of the form")
     @Test
     @Owner("Daniil")
     @Severity(SeverityLevel.TRIVIAL)
-    @Feature("Оформление страховки")
-    @Story("Отправка формы")
-    @Description("Чекаем работу лямбда степов")
+    @Feature("Insurance registration")
+    @Story("Form submission")
+    @Description("Checking the work of lambda steps")
     @Link(name = "demoqa", url = "https://demoqa.com")
     void successfulTest() {
         String name = "Daniil";
 
         SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открываем страницу с формой и блочим рекламу", () -> {
+        step("Open the page with the form and block the ad", () -> {
             open("/automation-practice-form");
             executeJavaScript("$('footer').remove()");
             executeJavaScript("$('#fixedban').remove()");
         });
 
         // Text
-        step("Вводим имя", () -> {
+        step("Enter name", () -> {
             $("[id=firstName]").setValue(name);
         });
-        step("Вводим фамилию", () -> {
+        step("Enter last name", () -> {
             $("[id=lastName]").setValue("Davydov");
         });
-        step("Вводим адрес почты", () -> {
+        step("Enter the email address", () -> {
             $("[id=userEmail]").setValue("da@da.ru");
         });
 
         // Radio-button
-        step("Выбираем пол", () -> {
+        step("Choose gender", () -> {
             $(byText("Male")).click();
         });
-        step("Вводим номер телефона", () -> {
+        step("Enter the phone number", () -> {
             $("[id=userNumber]").setValue("0123456789");
         });
 
         // Date
-        step("Выбираем дату рождения", () -> {
+        step("Choose the date of birth", () -> {
             $("[id=dateOfBirthInput]").click();
             $(".react-datepicker__month-select").selectOption("August");
             $(".react-datepicker__year-select").selectOption("1993");
@@ -67,25 +67,25 @@ public class Demo_qa_form_Jenkins extends TestBase {
         });
 
         // Text
-        step("Выбираем предмет", () -> {
+        step("Choosing the subject", () -> {
             $("#subjectsInput").sendKeys("m");
             $(byText("Maths")).click();
         });
 
         // Check-box
-        step("Выбираем предмет", () -> {
+        step("Choosing the hobby", () -> {
             $(byText("Sports")).click();
             $(byText("Reading")).click();
             $(byText("Music")).click();
         });
 
         // Picture
-        step("Выбрать файл", () -> {
+        step("Select File", () -> {
             $("#uploadPicture").uploadFromClasspath("pic.png");
         });
 
         // Text
-        step("Вводим адрес", () -> {
+        step("Enter address", () -> {
             $("[id=currentAddress]").setValue("Adress");
             Allure.getLifecycle().addAttachment(
                     "Screenshot1", "image/png", "png",
@@ -94,19 +94,19 @@ public class Demo_qa_form_Jenkins extends TestBase {
         });
 
         // Drop-down list
-        step("Выбираем штат и город", () -> {
+        step("Select state and city", () -> {
             $("#state").click();
             $(byText("NCR")).click();
             $("#city").click();
             $(byText("Delhi")).click();
         });
 
-        step("Нажимаем разместить", () -> {
+        step("Click submit", () -> {
             $("[id=submit]").click();
         });
 
         // Result:
-        step("Проверяем результат", () -> {
+        step("Checking the result", () -> {
             $(".modal-body").shouldHave(text("Daniil Davydov"),
                     text("da@da.ru"),
                     text("Male"),
