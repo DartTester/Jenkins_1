@@ -1,10 +1,13 @@
 package hw_tests;
 
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -57,6 +60,10 @@ public class Demo_qa_form_Jenkins extends TestBase {
             $(".react-datepicker__month-select").selectOption("August");
             $(".react-datepicker__year-select").selectOption("1993");
             $("[aria-label='Choose Tuesday, August 10th, 1993']").click();
+            Allure.getLifecycle().addAttachment(
+                    "Screenshot", "image/png", "png",
+                    ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES)
+            );
         });
 
         // Text
@@ -80,6 +87,10 @@ public class Demo_qa_form_Jenkins extends TestBase {
         // Text
         step("Вводим адрес", () -> {
             $("[id=currentAddress]").setValue("Adress");
+            Allure.getLifecycle().addAttachment(
+                    "Screenshot1", "image/png", "png",
+                    ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES)
+            );
         });
 
         // Drop-down list
