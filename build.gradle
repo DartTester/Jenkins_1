@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'io.qameta.allure' version '2.9.6'
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 repositories {
@@ -8,7 +8,7 @@ repositories {
 }
 
 def allureVersion = "2.19.0",
-    selenideVersion = "6.7.3",
+    selenideVersion = "6.7.2",
     junitVersion = "5.9.0",
     slf4jVersion = "2.0.0"
 
@@ -16,11 +16,11 @@ allure {
     report {
         version.set(allureVersion)
     }
-    adapter {
-        aspectjWeaver.set(true)
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true)  //обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
+            junit5 { //название фреймворка
+                adapterVersion.set(allureVersion) //версия интеграции фреймворка и Allure
             }
         }
     }
