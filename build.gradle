@@ -50,7 +50,7 @@ tasks.withType(Test) {
     }
 }
 
-task properties_test6(type: Test) {
+task test_with_params(type: Test) {
     useJUnitPlatform{
         includeTags "tag1"
     }
