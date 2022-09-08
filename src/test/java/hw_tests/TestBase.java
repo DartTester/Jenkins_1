@@ -30,14 +30,16 @@ public class TestBase {
 
         //Логин и пароль получаем из файла, которого нет в Гите и который мы создаем прямо в Дженкинсе
         CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class);
-        Configuration.remote = "https://" + credentialsConfig.login() + ":" + credentialsConfig.password() + "@" +
-                credentialsConfig.urlCloudSelenoid();
+        Configuration.remote = String.format("https://%s:%s@%s", credentialsConfig.login(), credentialsConfig.password(),
+                credentialsConfig.urlCloudSelenoid());
+    }
+        /*Configuration.remote = "https://" + credentialsConfig.login() + ":" + credentialsConfig.password() + "@" +
+                credentialsConfig.urlCloudSelenoid();*/
 
         // Configuration.browserSize = "1920x1080";
 
         // Надо указать, чтобы тесты запускались не в локальном браузере, а в Selenoid:
         //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-    }
 
     @AfterEach
     void addAttachments() {
