@@ -18,11 +18,11 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         // Для добавления видео в отчет:
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        /*DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
-        Configuration.browserCapabilities = capabilities;
+        Configuration.browserCapabilities = capabilities;*/
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser","chrome");
         Configuration.browserVersion = System.getProperty("version","100");
