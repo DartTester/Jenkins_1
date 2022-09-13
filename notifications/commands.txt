@@ -1,0 +1,24 @@
+Use this token to access the HTTP API:
+5508908778:AAF9MSp1YDHTYjeZo-ax4nUYhDqIkbac0qI
+
+Group Chat Id:
+-1001574382803
+
+Bot Chat Id:
+378864357
+
+Команда для запуска из терминала Windows
+
+SET TOKEN_BOT=5508908778:AAF9MSp1YDHTYjeZo-ax4nUYhDqIkbac0qI
+SET ID_CHAT=-1001574382803
+SET URL=https://api.telegram.org/bot5508908778:AAF9MSp1YDHTYjeZo-ax4nUYhDqIkbac0qI/sendMessage
+SET MESSAGE="Suck my balls, mr.Mikel !"
+curl -v -X POST --silent --output /dev/null %URL% -d chat_id=%ID_CHAT% -d text=%MESSAGE%
+
+
+java \
+"-DconfigFile=notifications/telegram.json" \
+-jar allure-notifications-4.1.jar
+
+Т.к. обратные слеши(перенос строки) поддерживаются не каждым терминалом, то можно привести команду к такому виду:
+java "-DconfigFile=notifications/telegram.json" -jar allure-notifications-4.2.1.jar
