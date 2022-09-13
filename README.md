@@ -1,3 +1,2 @@
-1. Взять свой код для http://demoqa.com/automation-practice-form
-2. Добавить аттачи для Allure – скриншот, page source, console.log и видео
-3. Cделать сборку в Jenkins
+1. Зарегистрируйте бота в Telegram, создайте чат и добавьте бота в него. 
+2. Добавьте бота к вашему проекту.
